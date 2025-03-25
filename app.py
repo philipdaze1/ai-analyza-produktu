@@ -39,7 +39,18 @@ st.markdown("""
         color: #000000 !important;
         transform: scale(1.05);
     }
-    </style>
+        .output-bubble {
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 900px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        font-size: 16px;
+        line-height: 1.6;
+        color: #000000;
+    }
+</style>
 """, unsafe_allow_html=True)
 
 # Načtení banneru Zlaté koruny a zarovnání na střed s animací a zaoblením
@@ -83,23 +94,6 @@ uploaded_file = st.file_uploader("📄 Nahraj PDF s analýzou produktu", type=["
 
 if uploaded_file:
     with st.spinner("🔍 Čtu PDF a analyzuji..."):
-        st.markdown("""
-            <style>
-            .submit-anim {
-                animation: pulseGlow 2s infinite;
-                text-align: center;
-                font-weight: bold;
-                font-size: 18px;
-                color: #000000;
-            }
-            @keyframes pulseGlow {
-                0% { text-shadow: 0 0 0px #fff; }
-                50% { text-shadow: 0 0 15px #fff; }
-                100% { text-shadow: 0 0 0px #fff; }
-            }
-            </style>
-            <div class='submit-anim'>📡 Probíhá analýza... Generujeme zpětnou vazbu PDF...</div>
-        """, unsafe_allow_html=True)
         doc = fitz.open(stream=uploaded_file.read(), filetype="pdf")
         text = ""
         for page in doc:
@@ -135,7 +129,12 @@ if uploaded_file:
         output = response.choices[0].message.content
 
         st.subheader("📄 Výstup AI agenta")
-        st.markdown(output)
+                st.markdown(f"""
+        <div class='output-bubble'>
+        {output.replace('**', '<b>').replace('
+', '<br>')}
+        </div>
+        """, unsafe_allow_html=True)
 
         # Vizualizace jako příklad (fiktivní data)
         st.subheader("📊 Vizualizace hodnocení")

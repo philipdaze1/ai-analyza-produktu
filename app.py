@@ -148,3 +148,4 @@ if uploaded_file:
         st.pyplot(fig)
 
         st.download_button("💾 Stáhnout výstup jako TXT", data=output, file_name="analyza_vystup.txt")
+

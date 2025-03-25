@@ -20,11 +20,11 @@ st.markdown("""
     }
     .main {
         background-color: #FFA500;
-        color: #333333;
+        color: #000000;
         font-family: 'Segoe UI', sans-serif;
     }
     h1, h2, h3, .stMarkdown, .stText, .stSubheader, .stTitle {
-        color: #ffffff !important;
+        color: #000000 !important;
     }
     .stButton>button, .stDownloadButton>button {
         background-color: #ffffff !important;

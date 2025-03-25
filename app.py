@@ -42,12 +42,12 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Načtení loga Zlaté koruny a zarovnání na střed
-image_url = "https://www.zlatakoruna.info/sites/default/files/zk_0.png"
-response = requests.get(image_url)
-image = Image.open(BytesIO(response.content))
+# Načtení banneru Zlaté koruny a zarovnání na střed
+banner_url = "https://www.zlatakoruna.info/sites/default/files/23zk_2_0.png"
+banner_response = requests.get(banner_url)
+banner_image = Image.open(BytesIO(banner_response.content))
 st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
-st.image(image, width=200)
+st.image(banner_image, width=600)
 st.markdown("</div>", unsafe_allow_html=True)
 
 st.title("🧠 AI Agent – Analýza finančního produktu")
@@ -107,3 +107,4 @@ if uploaded_file:
         st.pyplot(fig)
 
         st.download_button("💾 Stáhnout výstup jako TXT", data=output, file_name="analyza_vystup.txt")
+

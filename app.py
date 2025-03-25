@@ -39,39 +39,15 @@ st.markdown("""
         color: #000000 !important;
         transform: scale(1.05);
     }
-        #banner {
-        animation: fadeIn 2s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-        0% { opacity: 0; transform: translateY(-20px); }
-        100% { opacity: 1; transform: translateY(0); }
-    }
-    .fade-in-section {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInSection 1.2s ease-in-out forwards;
-    }
-
-    @keyframes fadeInSection {
-        0% {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-</style>
+    </style>
 """, unsafe_allow_html=True)
 
-# Načtení banneru Zlaté koruny a zarovnání na střed
-banner_url = "https://www.zlatakoruna.info/sites/default/files/23zk_2_0.png"
-banner_response = requests.get(banner_url)
-banner_image = Image.open(BytesIO(banner_response.content))
-st.markdown("<div id='banner' style='text-align: center;'>", unsafe_allow_html=True)
-st.image(banner_image, width=600)
+# Načtení loga Zlaté koruny a zarovnání na střed
+image_url = "https://www.zlatakoruna.info/sites/default/files/zk_0.png"
+response = requests.get(image_url)
+image = Image.open(BytesIO(response.content))
+st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
+st.image(image, width=200)
 st.markdown("</div>", unsafe_allow_html=True)
 
 st.title("🧠 AI Agent – Analýza finančního produktu")
@@ -116,13 +92,10 @@ if uploaded_file:
 
         output = response.choices[0].message.content
 
-        st.markdown("<div class='fade-in-section'>", unsafe_allow_html=True)
         st.subheader("📄 Výstup AI agenta")
         st.markdown(output)
 
         # Vizualizace jako příklad (fiktivní data)
-        st.markdown("</div>", unsafe_allow_html=True)
-st.markdown("<div class='fade-in-section'>", unsafe_allow_html=True)
         st.subheader("📊 Vizualizace hodnocení")
         categories = ["Výnosy", "Kvalita", "Bezpečnost"]
         scores = [4.2, 3.8, 3.1]
@@ -133,5 +106,4 @@ st.markdown("<div class='fade-in-section'>", unsafe_allow_html=True)
         ax.set_ylabel("Průměrná známka")
         st.pyplot(fig)
 
-        st.markdown("</div>", unsafe_allow_html=True)
         st.download_button("💾 Stáhnout výstup jako TXT", data=output, file_name="analyza_vystup.txt")

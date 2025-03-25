@@ -114,7 +114,9 @@ if uploaded_file:
         logo_path = BytesIO()
         image.save(logo_path, format='PNG')
         logo_path.seek(0)
-        pdf.image(logo_path, x=80, y=10, w=50)
+        with open("logo.png", "wb") as f:
+    f.write(logo_path.getbuffer())
+pdf.image("logo.png", x=80, y=10, w=50)
         pdf.ln(40)
 
         pdf.set_font("Arial", 'B', 16)
@@ -135,4 +137,3 @@ if uploaded_file:
         )
 
         st.download_button("💾 Stáhnout výstup jako TXT", data=output, file_name="analyza_vystup.txt")
-

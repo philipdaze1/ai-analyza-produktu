@@ -39,18 +39,7 @@ st.markdown("""
         color: #000000 !important;
         transform: scale(1.05);
     }
-        .output-bubble {
-        background-color: #fff;
-        border-radius: 15px;
-        padding: 20px;
-        margin: 20px auto;
-        max-width: 900px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        font-size: 16px;
-        line-height: 1.6;
-        color: #000000;
-    }
-</style>
+    </style>
 """, unsafe_allow_html=True)
 
 # Načtení banneru Zlaté koruny a zarovnání na střed s animací a zaoblením
@@ -129,12 +118,7 @@ if uploaded_file:
         output = response.choices[0].message.content
 
         st.subheader("📄 Výstup AI agenta")
-                st.markdown(f"""
-        <div class='output-bubble'>
-        {output.replace('**', '<b>').replace('
-', '<br>')}
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown(output)
 
         # Vizualizace jako příklad (fiktivní data)
         st.subheader("📊 Vizualizace hodnocení")

@@ -55,7 +55,7 @@ st.markdown("""
     .banner-image {
         border-radius: 20px;
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-        max-width: 100%;
+        width: 100%;
         height: auto;
     }
     @keyframes fadeInBanner {
@@ -64,7 +64,7 @@ st.markdown("""
     }
     </style>
     <div class="banner-container">
-        <img src="https://www.zlatakoruna.info/sites/default/files/23zk_2_0.png" class="banner-image" width="600"/>
+        <img src="https://www.zlatakoruna.info/sites/default/files/23zk_2_0.png" class="banner-image" width="100%"/>
     </div>
 """, unsafe_allow_html=True)
 

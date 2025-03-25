@@ -69,11 +69,13 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("""
-    <h1 style='text-align: center; color: #FFA500;'>AI AGENT ZLATÉ KORUNY</h1>
+    <h1 style='text-align: center; color: #FFA500; font-weight: bold;'>AI AGENT ZLATÉ KORUNY</h1>
 """, unsafe_allow_html=True)
 st.markdown("""
     <h3 style='text-align: center; color: #000000;'>Analýza finančního produktu</h3>
-    <hr style='border: 2px solid #FFA500; width: 60%; margin: auto;'>
+    <div style='margin: 20px 0;'>
+    <hr style='border: 1px solid #FFA500; width: 100%; margin: auto;'>
+</div>
 """, unsafe_allow_html=True)
 st.write("Nahrajte PDF s analýzou a získejte profesionálně stylizovaný výstup včetně vizualizace a PDF reportu.")
 

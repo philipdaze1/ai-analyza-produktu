@@ -72,7 +72,7 @@ banner_response = requests.get(banner_url)
 banner_image = Image.open(BytesIO(banner_response.content))
 st.markdown("<div id='banner' style='text-align: center;'>", unsafe_allow_html=True)
 st.image(banner_image, width=600)
-st.markdown("</div>", unsafe_allow_html=True)
+        st.markdown("</div>", unsafe_allow_html=True)
 
 st.title("🧠 AI Agent – Analýza finančního produktu")
 st.subheader("Zlatá koruna")
@@ -116,14 +116,14 @@ if uploaded_file:
 
         output = response.choices[0].message.content
 
-        st.markdown("<div class='fade-in-section'>", unsafe_allow_html=True)
-st.subheader("📄 Výstup AI agenta")
-        st.markdown(output)
+                st.markdown("<div class='fade-in-section'>", unsafe_allow_html=True)
+        st.subheader("📄 Výstup AI agenta")
+                st.markdown(output)
 
         # Vizualizace jako příklad (fiktivní data)
         st.markdown("</div>", unsafe_allow_html=True)
 st.markdown("<div class='fade-in-section'>", unsafe_allow_html=True)
-st.subheader("📊 Vizualizace hodnocení")
+        st.subheader("📊 Vizualizace hodnocení")
         categories = ["Výnosy", "Kvalita", "Bezpečnost"]
         scores = [4.2, 3.8, 3.1]
 
@@ -134,5 +134,4 @@ st.subheader("📊 Vizualizace hodnocení")
         st.pyplot(fig)
 
         st.markdown("</div>", unsafe_allow_html=True)
-st.download_button("💾 Stáhnout výstup jako TXT", data=output, file_name="analyza_vystup.txt")
-
+        st.download_button("💾 Stáhnout výstup jako TXT", data=output, file_name="analyza_vystup.txt")

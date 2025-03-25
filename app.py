@@ -7,7 +7,6 @@ import requests
 from io import BytesIO
 
 # ⚠️ Bezpečné načtení API klíče ze Streamlit secrets
-openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 # Nastavení barvy a rozhraní
 st.set_page_config(page_title="AI Analýza – Zlatá koruna", page_icon="🧠", layout="centered")
@@ -67,7 +66,7 @@ if uploaded_file:
         {text}
         """
 
-        client = OpenAI()
+        client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
         response = client.chat.completions.create(
             model="gpt-4-turbo",
@@ -80,3 +79,4 @@ if uploaded_file:
         st.markdown(output)
 
         st.download_button("💾 Stáhnout výstup jako TXT", data=output, file_name="analyza_vystup.txt")
+

@@ -106,34 +106,4 @@ if uploaded_file:
         ax.set_ylabel("Průměrná známka")
         st.pyplot(fig)
 
-        # Generování PDF souboru
-        pdf = FPDF()
-        pdf.add_page()
-
-        # Přidání loga
-        logo_path = BytesIO()
-        image.save(logo_path, format='PNG')
-        logo_path.seek(0)
-        with open("logo.png", "wb") as f:
-    f.write(logo_path.getbuffer())
-    pdf.image("logo.png", x=80, y=10, w=50)
-        pdf.ln(40)
-
-        pdf.set_font("Arial", 'B', 16)
-        pdf.cell(0, 10, "AI Analýza produktu – Zlatá koruna", ln=True, align="C")
-        pdf.ln(10)
-        pdf.set_font("Arial", size=12)
-        pdf.multi_cell(0, 10, output.encode('latin-1', 'replace').decode('latin-1'))
-
-        pdf_output = BytesIO()
-        pdf.output(pdf_output)
-        pdf_output.seek(0)
-
-        st.download_button(
-            "📥 Stáhnout PDF report",
-            data=pdf_output,
-            file_name="analyza_report.pdf",
-            mime="application/pdf"
-        )
-
         st.download_button("💾 Stáhnout výstup jako TXT", data=output, file_name="analyza_vystup.txt")

@@ -101,7 +101,7 @@ if uploaded_file:
         scores = [4.2, 3.8, 3.1]
 
         fig, ax = plt.subplots()
-        bars = ax.bar(categories, scores)
+        bars = ax.bar(categories, scores, color="#333333")
         ax.set_ylim(0, 5)
         ax.set_ylabel("Průměrná známka")
         st.pyplot(fig)
@@ -109,8 +109,19 @@ if uploaded_file:
         # Generování PDF souboru
         pdf = FPDF()
         pdf.add_page()
+
+        # Přidání loga
+        logo_path = BytesIO()
+        image.save(logo_path, format='PNG')
+        logo_path.seek(0)
+        pdf.image(logo_path, x=80, y=10, w=50)
+        pdf.ln(40)
+
+        pdf.set_font("Arial", 'B', 16)
+        pdf.cell(0, 10, "AI Analýza produktu – Zlatá koruna", ln=True, align="C")
+        pdf.ln(10)
         pdf.set_font("Arial", size=12)
-        pdf.multi_cell(0, 10, output)
+        pdf.multi_cell(0, 10, output.encode('latin-1', 'replace').decode('latin-1'))
 
         pdf_output = BytesIO()
         pdf.output(pdf_output)
@@ -124,3 +135,4 @@ if uploaded_file:
         )
 
         st.download_button("💾 Stáhnout výstup jako TXT", data=output, file_name="analyza_vystup.txt")
+

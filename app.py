@@ -42,13 +42,31 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Načtení loga Zlaté koruny a zarovnání na střed
-image_url = "https://www.zlatakoruna.info/sites/default/files/zk_0.png"
-response = requests.get(image_url)
-image = Image.open(BytesIO(response.content))
-st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
-st.image(image, width=200)
-st.markdown("</div>", unsafe_allow_html=True)
+# Načtení banneru Zlaté koruny a zarovnání na střed s animací a zaoblením
+banner_url = "https://www.zlatakoruna.info/sites/default/files/23zk_2_0.png"
+banner_response = requests.get(banner_url)
+banner_image = Image.open(BytesIO(banner_response.content))
+st.markdown("""
+    <style>
+    .banner-container {
+        text-align: center;
+        animation: fadeInBanner 1.5s ease-in-out;
+    }
+    .banner-image {
+        border-radius: 20px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        max-width: 100%;
+        height: auto;
+    }
+    @keyframes fadeInBanner {
+        0% { opacity: 0; transform: scale(0.95); }
+        100% { opacity: 1; transform: scale(1); }
+    }
+    </style>
+    <div class="banner-container">
+        <img src="https://www.zlatakoruna.info/sites/default/files/23zk_2_0.png" class="banner-image" width="600"/>
+    </div>
+""", unsafe_allow_html=True)
 
 st.title("🧠 AI Agent – Analýza finančního produktu")
 st.subheader("Zlatá koruna")
@@ -107,3 +125,4 @@ if uploaded_file:
         st.pyplot(fig)
 
         st.download_button("💾 Stáhnout výstup jako TXT", data=output, file_name="analyza_vystup.txt")
+

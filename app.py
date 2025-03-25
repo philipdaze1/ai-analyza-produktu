@@ -83,6 +83,23 @@ uploaded_file = st.file_uploader("📄 Nahraj PDF s analýzou produktu", type=["
 
 if uploaded_file:
     with st.spinner("🔍 Čtu PDF a analyzuji..."):
+        st.markdown("""
+            <style>
+            .submit-anim {
+                animation: pulseGlow 2s infinite;
+                text-align: center;
+                font-weight: bold;
+                font-size: 18px;
+                color: #000000;
+            }
+            @keyframes pulseGlow {
+                0% { text-shadow: 0 0 0px #fff; }
+                50% { text-shadow: 0 0 15px #fff; }
+                100% { text-shadow: 0 0 0px #fff; }
+            }
+            </style>
+            <div class='submit-anim'>📡 Probíhá analýza... Generujeme zpětnou vazbu PDF...</div>
+        """, unsafe_allow_html=True)
         doc = fitz.open(stream=uploaded_file.read(), filetype="pdf")
         text = ""
         for page in doc:

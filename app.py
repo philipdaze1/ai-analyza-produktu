@@ -68,8 +68,13 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-st.title("🧠 AI Agent – Analýza finančního produktu")
-st.subheader("Zlatá koruna")
+st.markdown("""
+    <h1 style='text-align: center; color: #FFA500;'>AI AGENT ZLATÉ KORUNY</h1>
+""", unsafe_allow_html=True)
+st.markdown("""
+    <h3 style='text-align: center; color: #000000;'>Analýza finančního produktu</h3>
+    <hr style='border: 2px solid #FFA500; width: 60%; margin: auto;'>
+""", unsafe_allow_html=True)
 st.write("Nahrajte PDF s analýzou a získejte profesionálně stylizovaný výstup včetně vizualizace a PDF reportu.")
 
 uploaded_file = st.file_uploader("📄 Nahraj PDF s analýzou produktu", type=["pdf"])
@@ -125,4 +130,3 @@ if uploaded_file:
         st.pyplot(fig)
 
         st.download_button("💾 Stáhnout výstup jako TXT", data=output, file_name="analyza_vystup.txt")
-
